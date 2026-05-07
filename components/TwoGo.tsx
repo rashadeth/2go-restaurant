@@ -187,6 +187,70 @@ export default function TwoGo() {
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: ${C.bg}; }
         ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 2px; }
+
+        .twogo-testimonials-row { scrollbar-width: none; -ms-overflow-style: none; }
+        .twogo-testimonials-row::-webkit-scrollbar { display: none; }
+
+        /* ── RESPONSIVE ───────────────────────────────────────────── */
+
+        /* Tablet 768–1023 */
+        @media (min-width: 768px) and (max-width: 1023px) {
+          .twogo-menu-circle { width: 220px !important; height: 220px !important; }
+          .twogo-feed-grid   { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+
+        /* Mobile ≤767 */
+        @media (max-width: 767px) {
+          /* Navbar */
+          .nav2go-links    { display: none !important; }
+          .nav2go-location { display: none !important; }
+          nav[data-twogo-nav] { height: 64px !important; padding: 0 24px !important; }
+
+          /* Section padding */
+          .twogo-section-pad { padding: 48px 24px !important; }
+
+          /* Hero */
+          .twogo-hero-hl   { font-size: clamp(28px, 8vw, 48px) !important; width: 90% !important; top: 18% !important; }
+          .twogo-hero-sub  { font-size: clamp(18px, 4vw, 28px) !important; width: 88% !important; top: 50% !important; }
+          .twogo-hero-btn  { top: 66% !important; padding: 14px 40px !important; }
+
+          /* Menu */
+          .twogo-menu-grid   { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .twogo-menu-circle { width: 240px !important; height: 240px !important; }
+
+          /* About */
+          .twogo-about-p { font-size: 16px !important; }
+
+          /* Why cards */
+          .twogo-why-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+
+          /* Rewards badges */
+          .twogo-rewards-badges { grid-template-columns: 1fr !important; }
+
+          /* Rewards tiers */
+          .twogo-rewards-tiers { grid-template-columns: 1fr !important; }
+          .twogo-tier-divider  { border-right: none !important; border-top: 1px solid ${C.border}; padding-top: 24px !important; margin-top: 16px !important; }
+
+          /* Feed */
+          .twogo-feed-grid { grid-template-columns: 1fr !important; }
+
+          /* Catering */
+          .twogo-catering-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
+          .twogo-catering-img  { min-height: 300px !important; }
+
+          /* Footer */
+          .twogo-footer-grid    { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .twogo-footer-divider { border-left: none !important; padding-left: 0 !important; border-top: 1px solid ${C.border}; padding-top: 32px !important; }
+
+          /* Buttons full-width */
+          .twogo-btn-dark, .twogo-btn-yellow, .twogo-btn-red,
+          .twogo-btn-outline, .twogo-hero-cta, .twogo-menu-cta {
+            width: 100% !important; box-sizing: border-box !important;
+          }
+
+          /* No horizontal overflow */
+          * { max-width: 100%; }
+        }
       `}</style>
 
       <Navbar />
@@ -201,7 +265,7 @@ export default function TwoGo() {
         backgroundPosition: "center top",
       }}>
         {/* Block 1 — red headline */}
-        <div style={{
+        <div className="twogo-hero-hl" style={{
           position: "absolute",
           top: "22%",
           left: "50%",
@@ -219,7 +283,7 @@ export default function TwoGo() {
         </div>
 
         {/* Block 2 — dark subheadline */}
-        <div style={{
+        <div className="twogo-hero-sub" style={{
           position: "absolute",
           top: "55%",
           left: "50%",
@@ -237,7 +301,7 @@ export default function TwoGo() {
         </div>
 
         {/* CTA button */}
-        <button className="twogo-hero-cta" style={{
+        <button className="twogo-hero-cta twogo-hero-btn" style={{
           position: "absolute",
           top: "72%",
           left: "50%",
@@ -275,7 +339,7 @@ export default function TwoGo() {
       </div>
 
       {/* ─── MENU ────────────────────────────────────────────────── */}
-      <div data-section="menu" style={{ background: C.bg, padding: "80px 48px", textAlign: "center" }}>
+      <div data-section="menu" className="twogo-section-pad" style={{ background: C.bg, padding: "80px 48px", textAlign: "center" }}>
 
         {/* Section header */}
         <div style={{
@@ -298,7 +362,7 @@ export default function TwoGo() {
         </div>
 
         {/* 3-column circle grid */}
-        <div style={{
+        <div className="twogo-menu-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: 48,
@@ -309,7 +373,7 @@ export default function TwoGo() {
           {/* Item 1 — Amala */}
           <div style={{ position: "relative" }}>
             <div style={{ position: "relative" }}>
-              <div style={{
+              <div className="twogo-menu-circle" style={{
                 width: 280, height: 280, borderRadius: "50%",
                 overflow: "hidden", margin: "0 auto", position: "relative",
               }}>
@@ -353,7 +417,7 @@ export default function TwoGo() {
           {/* Item 2 — Jollof Rice */}
           <div style={{ position: "relative" }}>
             <div style={{ position: "relative" }}>
-              <div style={{
+              <div className="twogo-menu-circle" style={{
                 width: 280, height: 280, borderRadius: "50%",
                 overflow: "hidden", margin: "0 auto", position: "relative",
               }}>
@@ -397,7 +461,7 @@ export default function TwoGo() {
           {/* Item 3 — Pepper Soup */}
           <div style={{ position: "relative" }}>
             <div style={{ position: "relative" }}>
-              <div style={{
+              <div className="twogo-menu-circle" style={{
                 width: 280, height: 280, borderRadius: "50%",
                 overflow: "hidden", margin: "0 auto", position: "relative",
               }}>
@@ -465,7 +529,7 @@ export default function TwoGo() {
         }}>
           Authentic Nigerian Flavour in Abuja
         </div>
-        <p style={{
+        <p className="twogo-about-p" style={{
           fontFamily: "'Manrope', sans-serif",
           fontWeight: 600,
           fontSize: 18,
@@ -479,7 +543,7 @@ export default function TwoGo() {
       </div>
 
       {/* ─── WHY 2GO ─────────────────────────────────────────────── */}
-      <div data-section="why" style={{ background: "#F2EBE0", padding: "80px 48px", textAlign: "center" }}>
+      <div data-section="why" className="twogo-section-pad" style={{ background: "#F2EBE0", padding: "80px 48px", textAlign: "center" }}>
 
         {/* Section header */}
         <div style={{
@@ -502,7 +566,7 @@ export default function TwoGo() {
         </div>
 
         {/* 3-column card grid */}
-        <div style={{
+        <div className="twogo-why-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: 24,
@@ -644,7 +708,7 @@ export default function TwoGo() {
       </div>
 
       {/* ─── REWARDS ─────────────────────────────────────────────── */}
-      <div data-section="rewards" style={{ background: "#F2EBE0", padding: "80px 48px", textAlign: "center" }}>
+      <div data-section="rewards" className="twogo-section-pad" style={{ background: "#F2EBE0", padding: "80px 48px", textAlign: "center" }}>
 
         {/* Medal icon */}
         <span style={{ fontSize: 56, display: "block", marginBottom: 16, lineHeight: 1, color: C.yellow }}>✯</span>
@@ -662,7 +726,7 @@ export default function TwoGo() {
         </div>
 
         {/* 3 yellow sticker badges */}
-        <div style={{
+        <div className="twogo-rewards-badges" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           maxWidth: 900,
@@ -703,7 +767,7 @@ export default function TwoGo() {
         </div>
 
         {/* Rewards tiers */}
-        <div style={{
+        <div className="twogo-rewards-tiers" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           maxWidth: 900,
@@ -711,7 +775,7 @@ export default function TwoGo() {
         }}>
 
           {/* Tier 1 */}
-          <div style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div className="twogo-tier-divider" style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
               Free Side Dish
             </div>
@@ -721,7 +785,7 @@ export default function TwoGo() {
           </div>
 
           {/* Tier 2 */}
-          <div style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div className="twogo-tier-divider" style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
               Free Main Meal
             </div>
@@ -790,7 +854,7 @@ export default function TwoGo() {
       </div>
 
       {/* ─── FEED ────────────────────────────────────────────────── */}
-      <div data-section="feed" style={{ background: C.bg, padding: "80px 48px", textAlign: "center" }}>
+      <div data-section="feed" className="twogo-section-pad" style={{ background: C.bg, padding: "80px 48px", textAlign: "center" }}>
 
         {/* Section header */}
         <div style={{ marginBottom: 56 }}>
@@ -816,7 +880,7 @@ export default function TwoGo() {
         </div>
 
         {/* Instagram cards grid */}
-        <div style={{
+        <div className="twogo-feed-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: 16,
@@ -914,241 +978,282 @@ export default function TwoGo() {
 
       </div>
 
-      {/* ─── HUNGER SHOT ─────────────────────────────────────────── */}
-      <div data-section="hunger-shot" style={{ background: C.bg, padding: "0 48px 48px" }}>
-        <div style={{ position: "relative", height: "80vh", overflow: "hidden", borderRadius: 32 }}>
-          {/* Photo */}
-          <div style={{
-            position: "absolute", inset: 0,
-            backgroundImage: "url(https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1600&q=80)",
-            backgroundSize: "cover", backgroundPosition: "center",
-            filter: "brightness(0.28) saturate(0.75)",
-          }} />
-          {/* Cream overlay */}
-          <div style={{
-            position: "absolute", inset: 0,
-            background: `linear-gradient(130deg, rgba(250,246,238,0.92) 0%, rgba(250,246,238,0.35) 48%, transparent 100%)`,
-          }} />
-          {/* Bulk badge */}
-          <div style={{
-            position: "absolute", top: 40, right: 40,
-            background: C.red, color: "#fff", borderRadius: 12,
-            padding: "12px 24px", fontFamily: "Fredoka", fontSize: 16, fontWeight: 600,
-          }}>
-            Bulk Orders
-          </div>
+      {/* ─── CATERING ────────────────────────────────────────────── */}
+      <div data-section="catering" className="twogo-catering-grid" style={{
+        background: C.yellow,
+        minHeight: 500,
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        alignItems: "center",
+        overflow: "hidden",
+        position: "relative",
+      }}>
 
-          {/* Content */}
+        {/* LEFT — text */}
+        <div style={{ padding: "80px 64px" }}>
           <div style={{
-            position: "absolute", inset: 0,
-            display: "flex", flexDirection: "column", justifyContent: "flex-end",
-            padding: "80px",
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(48px, 7vw, 80px)",
+            color: C.dark, textTransform: "uppercase",
+            lineHeight: 0.95,
           }}>
-            <span className="twogo-lbl" style={{ marginBottom: 20 }}>Feeding a crowd</span>
-            <h2 style={{
-              fontFamily: "Fredoka", fontSize: "clamp(52px,8vw,100px)",
-              fontWeight: 700, lineHeight: 0.92, letterSpacing: "-2.5px",
-              marginBottom: 36, maxWidth: 700, color: C.dark,
-            }}>
-              Feeding a crowd?<br />
-              <span style={{ color: C.red }}>We do that too.</span>
-            </h2>
-            <div style={{ display: "flex", gap: 16, flexWrap: "wrap", marginBottom: 32 }}>
-              <a href="https://wa.me/2349054005285" target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
-                <button className="twogo-btn-red" style={{ fontSize: 17 }}>Talk to Us on WhatsApp</button>
-              </a>
-              <button className="twogo-btn-dark" style={{ fontSize: 17 }}>View Menu</button>
-            </div>
-            <div style={{ display: "flex", gap: 28 }}>
-              {["Birthdays", "Corporate", "Lifestyle"].map(t => (
-                <span key={t} className="twogo-red-dot" style={{ fontSize: 13, color: C.muted, fontWeight: 500 }}>{t}</span>
-              ))}
-            </div>
+            Big Event?
           </div>
+          <div style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(36px, 5vw, 60px)",
+            color: C.red, textTransform: "uppercase",
+            lineHeight: 0.95, marginBottom: 24,
+          }}>
+            We&rsquo;ve Got You.
+          </div>
+          <div style={{
+            fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+            fontSize: 22, color: C.dark, marginBottom: 16,
+          }}>
+            Nigerian Catering in Abuja for Events &amp; Parties
+          </div>
+          <p style={{
+            fontFamily: "'Manrope', sans-serif", fontWeight: 600,
+            fontSize: 17, color: C.dark, lineHeight: 1.7, marginBottom: 40,
+          }}>
+            Order catering straight from the kitchen that knows how to feed a crowd. 2Go style.
+          </p>
+          <a href="https://wa.me/2349054005285" target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+            <button style={{
+              background: C.dark, color: C.yellow,
+              border: "2.5px solid #1A0A00",
+              borderRadius: 9999, padding: "16px 48px",
+              fontFamily: "'Anton', sans-serif", fontSize: 20,
+              textTransform: "uppercase", cursor: "pointer",
+              lineHeight: 1, transition: "background 0.2s ease, color 0.2s ease",
+            }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "#fff"; (e.currentTarget as HTMLButtonElement).style.color = C.dark; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = C.dark; (e.currentTarget as HTMLButtonElement).style.color = C.yellow; }}
+            >
+              Talk to Us on WhatsApp
+            </button>
+          </a>
         </div>
+
+        {/* RIGHT — food image */}
+        <div className="twogo-catering-img" style={{
+          height: "100%",
+          minHeight: 500,
+          backgroundImage: "url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=900&q=80')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }} />
+
       </div>
 
-      {/* ─── REVIEWS ─────────────────────────────────────────────── */}
-      <div data-section="reviews" style={{ background: C.bg, padding: "120px 48px" }}>
-        <div style={{
-          display: "flex", justifyContent: "space-between", alignItems: "flex-end",
-          marginBottom: 64, flexWrap: "wrap", gap: 24,
-        }}>
-          <div>
-            <span className="twogo-lbl" style={{ display: "block", marginBottom: 14 }}>Real talk</span>
-            <h2 style={{
-              fontFamily: "Fredoka", fontSize: "clamp(40px,6vw,72px)",
-              fontWeight: 700, letterSpacing: "-1.5px", lineHeight: 0.92, color: C.dark,
-            }}>
-              What Abuja<br />
-              <span style={{ color: C.yellow }}>Is Saying.</span>
-            </h2>
+      {/* ─── TESTIMONIALS ────────────────────────────────────────── */}
+      <div data-section="testimonials" className="twogo-section-pad" style={{ background: C.bg, padding: "80px 48px", textAlign: "center", overflow: "hidden" }}>
+
+        {/* Header */}
+        <div style={{ marginBottom: 64 }}>
+          <div style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(36px, 5vw, 64px)",
+            color: C.red, textTransform: "uppercase", lineHeight: 1,
+          }}>
+            Real Talk, Real Flavour
           </div>
-          <span className="twogo-lbl">{REVIEWS.length} reviews</span>
+          <div style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: 22, color: C.dark, textTransform: "uppercase", marginTop: 8,
+          }}>
+            What Abuja Is Saying About 2Go
+          </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 2 }}>
-          {REVIEWS.map((r, i) => (
-            <div key={i} className="twogo-review-card" style={{
-              background: i % 2 === 0 ? "#fff" : C.bgAlt,
-              border: `1px solid ${C.border}`,
-              borderRadius:
-                i === 0 ? "24px 0 0 0"
-                : i === REVIEWS.length - 1 ? "0 0 24px 0"
-                : "0",
-              padding: "44px 36px",
-            }}>
-              <div style={{
-                width: 20, height: 3,
-                background: i % 2 === 0 ? C.red : C.yellow,
-                borderRadius: 2, marginBottom: 22,
-              }} />
-              <div style={{ display: "flex", gap: 3, marginBottom: 18 }}>
-                {[...Array(5)].map((_, si) => (
-                  <span key={si} style={{ color: si < 4 ? C.yellow : C.red, fontSize: 13 }}>★</span>
+        {/* Auto-scrolling marquee */}
+        <div style={{ overflow: "hidden", width: "100%" }}>
+          <div style={{
+            display: "flex", flexDirection: "row", alignItems: "center",
+            gap: 32, width: "max-content",
+            animation: "twogo-marquee 25s linear infinite",
+          }}>
+            {[0, 1].map(set => (
+              <div key={set} style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: 32, flexShrink: 0 }}>
+                {[
+                  { quote: "The jollof rice is unmatched. Every single time it's perfect. 2Go is the only place I trust.", name: "Chioma A.", star: C.red,      text: C.red      },
+                  { quote: "Ordered for my birthday — 80 people, all plates wiped clean. Absolutely incredible.",          name: "Emeka O.",  star: "#2D6A4F", text: "#2D6A4F" },
+                  { quote: "The pepper soup hit different on a cold evening. Rich, bold, deeply Nigerian. Love it.",        name: "Fatima B.", star: C.yellow,   text: C.red      },
+                  { quote: "Fast delivery, hot food, great packaging. 2Go never disappoints. My go-to always.",            name: "Tunde K.",  star: "#2D6A4F", text: "#2D6A4F" },
+                  { quote: "Best peppered chicken in Abuja. No debate. The flavour is insane every time.",                 name: "Adaeze M.", star: C.red,      text: C.red      },
+                ].map((t, i) => (
+                  <div key={i} style={{ flexShrink: 0, textAlign: "center" }}>
+                    {/* Two-layer starburst */}
+                    <div style={{ position: "relative", width: 264, height: 264, margin: "0 auto" }}>
+                      {/* Outer dark layer */}
+                      <div style={{
+                        position: "absolute", top: 0, left: 0,
+                        width: 264, height: 264, background: C.dark,
+                        clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
+                      }} />
+                      {/* Inner white layer with content */}
+                      <div style={{
+                        position: "absolute", top: 2, left: 2,
+                        width: 260, height: 260, background: "#fff",
+                        clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
+                        display: "flex", flexDirection: "column",
+                        alignItems: "center", justifyContent: "center",
+                        padding: "32px 20px",
+                      }}>
+                        <span style={{ fontSize: 28, color: t.star, marginBottom: 12, lineHeight: 1 }}>★</span>
+                        <p style={{
+                          fontFamily: "'Manrope', sans-serif", fontWeight: 600,
+                          fontSize: 12, color: t.text, textAlign: "center", lineHeight: 1.6,
+                        }}>
+                          &ldquo;{t.quote}&rdquo;
+                        </p>
+                      </div>
+                    </div>
+                    {/* Name */}
+                    <div style={{
+                      fontFamily: "'Manrope', sans-serif", fontWeight: 700,
+                      fontSize: 14, color: C.dark, textAlign: "center", marginTop: 12,
+                    }}>
+                      {t.name}
+                    </div>
+                  </div>
                 ))}
               </div>
-              <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 16, color: C.dark, lineHeight: 1.7, marginBottom: 28 }}>
-                &ldquo;{r.text}&rdquo;
-              </p>
-              <span style={{ fontSize: 13, color: C.dark, fontWeight: 600 }}>{r.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ─── LEAD CAPTURE ────────────────────────────────────────── */}
-      <div data-section="lead-capture" style={{ background: C.dark, padding: "120px 48px", position: "relative", overflow: "hidden" }}>
-        {/* Ghost type */}
-        <div style={{
-          position: "absolute", bottom: -40, right: -20,
-          fontFamily: "Fredoka", fontSize: "clamp(120px,20vw,220px)",
-          fontWeight: 700, color: "rgba(255,251,240,0.03)",
-          lineHeight: 1, userSelect: "none", pointerEvents: "none",
-          letterSpacing: "-6px", whiteSpace: "nowrap",
-        }}>2GO</div>
-        {/* Decorative rings */}
-        <div style={{
-          position: "absolute", top: -60, right: 200,
-          width: 220, height: 220, borderRadius: "50%",
-          border: `2px solid ${C.red}`, opacity: 0.12, pointerEvents: "none",
-        }} />
-        <div style={{
-          position: "absolute", top: 20, right: 280,
-          width: 80, height: 80, borderRadius: "50%",
-          background: C.red, opacity: 0.08, pointerEvents: "none",
-        }} />
-
-        <div style={{ maxWidth: 600, position: "relative" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 22 }}>
-            <div style={{ width: 8, height: 8, borderRadius: "50%", background: C.red }} />
-            <span className="twogo-lbl" style={{ color: "rgba(255,251,240,0.3)" }}>Stay in the loop</span>
+            ))}
           </div>
-
-          <h2 style={{
-            fontFamily: "Fredoka", fontSize: "clamp(48px,7vw,80px)",
-            fontWeight: 700, color: "#FFFBF0", lineHeight: 0.92,
-            letterSpacing: "-2px", marginBottom: 24,
-          }}>
-            Be first to know<br />
-            <span style={{ color: C.yellow }}>deals</span> and{" "}
-            <span style={{ color: C.red }}>drops.</span>
-          </h2>
-
-          <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 17, color: C.dark, lineHeight: 1.7, marginBottom: 48, maxWidth: 400 }}>
-            Promos, new menu items, weekend specials. Right to your phone and inbox. No spam.
-          </p>
-
-          {!submitted ? (
-            <div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginBottom: 16 }}>
-                <input
-                  className="twogo-inp" type="email" placeholder="your@email.com"
-                  value={form.email}
-                  onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                />
-                <input
-                  className="twogo-inp" type="tel" placeholder="080XXXXXXXX"
-                  value={form.phone}
-                  onChange={e => setForm(p => ({ ...p, phone: e.target.value }))}
-                />
-              </div>
-              <button className="twogo-btn-yellow" onClick={submit} style={{ width: "100%", fontSize: 20 }}>
-                Make it 2Go 🔥
-              </button>
-              <p style={{ fontSize: 13, color: "rgba(255,251,240,0.2)", textAlign: "center", marginTop: 16 }}>
-                No spam. Just good food news.
-              </p>
-            </div>
-          ) : (
-            <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-              <div style={{
-                width: 64, height: 64, borderRadius: "50%", background: C.yellow,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 26, color: C.dark, fontWeight: 700,
-              }}>✓</div>
-              <div>
-                <h3 style={{ fontFamily: "Fredoka", fontSize: 28, fontWeight: 700, color: "#FFFBF0", marginBottom: 6 }}>
-                  You&rsquo;re in the <span style={{ color: C.yellow }}>2Go fam!</span>
-                </h3>
-                <p style={{ fontSize: 15, color: "rgba(255,251,240,0.4)" }}>Good food news is on the way.</p>
-              </div>
-            </div>
-          )}
         </div>
+
       </div>
 
       {/* ─── FOOTER ──────────────────────────────────────────────── */}
-      <div data-section="footer" style={{ background: C.bgAlt, padding: "64px 48px 40px", borderTop: `3px solid ${C.red}` }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 48, marginBottom: 56 }}>
-          {/* Brand */}
+      <footer data-section="footer" style={{
+        background: C.bg,
+        borderTop: `3px solid ${C.red}`,
+        padding: "48px 48px 0",
+      }}>
+
+        {/* Main grid */}
+        <div className="twogo-footer-grid" style={{
+          display: "grid",
+          gridTemplateColumns: "auto 1fr 1fr 1fr auto",
+          gap: 48,
+          alignItems: "start",
+        }}>
+
+          {/* Col 1 — Logo */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-              <div style={{ width: 10, height: 10, borderRadius: "50%", background: C.red }} />
-              <span style={{ fontFamily: "Fredoka", fontSize: 30, fontWeight: 700, color: C.dark, lineHeight: 1 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 0 }}>
+              <div style={{ width: 14, height: 14, borderRadius: "50%", background: C.red, flexShrink: 0 }} />
+              <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 48, color: C.dark, lineHeight: 1 }}>
                 2go<span style={{ color: C.yellow }}>.</span>
               </span>
             </div>
-            <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.9 }}>
-              Striking Flavour.<br />Unforgettable Experience.
-            </p>
           </div>
 
-          {/* Visit */}
+          {/* Col 2 — Locations */}
           <div>
-            <span className="twogo-lbl" style={{ display: "block", marginBottom: 20 }}>Visit Us</span>
-            <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.9 }}>
-              2GO Building, beside SIMS Digital Center<br />
-              Aminu Kano Crescent, Wuse<br />
-              Abuja, Nigeria
-            </p>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <span className="twogo-lbl" style={{ display: "block", marginBottom: 20 }}>Contact</span>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              <a href="tel:09054005285" style={{ color: C.muted, textDecoration: "none", fontSize: 14 }}>0905 400 5285</a>
-              <a href="tel:08163217875" style={{ color: C.muted, textDecoration: "none", fontSize: 14 }}>0816 321 7875</a>
-              <a
-                href="https://instagram.com/2gorestaurantabj"
-                target="_blank" rel="noreferrer"
-                style={{ color: C.red, textDecoration: "none", fontSize: 14, fontWeight: 600, marginTop: 4 }}
-              >
-                @2gorestaurantabj ↗
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: C.dark, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
+              Locations
+            </div>
+            {["Wuse II, Abuja", "Order for Delivery", "Bulk Orders", "Catering", "See Full Menu"].map(link => (
+              <a key={link} href="#" style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, display: "block", marginBottom: 8, textDecoration: "none" }}>
+                {link}
               </a>
+            ))}
+          </div>
+
+          {/* Col 3 — Order Now */}
+          <div>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: C.dark, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
+              Order Now
+            </div>
+            {["Directly from us (Recommended)", "WhatsApp Order", "Call Us"].map(link => (
+              <a key={link} href="#" style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, display: "block", marginBottom: 8, textDecoration: "none" }}>
+                {link}
+              </a>
+            ))}
+          </div>
+
+          {/* Col 4 — Socials */}
+          <div>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: C.dark, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
+              Our Socials
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, width: "fit-content" }}>
+              {[
+                { label: "in",  href: "#" },
+                { label: "fb",  href: "#" },
+                { label: "tk",  href: "#" },
+                { label: "ig",  href: "https://instagram.com/2gorestaurantabj" },
+              ].map(({ label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer" style={{
+                  width: 44, height: 44, borderRadius: "50%",
+                  border: `2px solid ${C.dark}`,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  textDecoration: "none",
+                }}>
+                  <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.dark, lineHeight: 1 }}>
+                    {label}
+                  </span>
+                </a>
+              ))}
+            </div>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.red, textTransform: "uppercase", marginTop: 16 }}>
+              Blog
             </div>
           </div>
+
+          {/* Col 5 — Special Discounts */}
+          <div className="twogo-footer-divider" style={{ borderLeft: `1px solid ${C.border}`, paddingLeft: 48 }}>
+            <div style={{
+              fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.dark,
+              textTransform: "uppercase", letterSpacing: 1, marginBottom: 16,
+              maxWidth: 220, lineHeight: 1.3,
+            }}>
+              Special Discounts, Points &amp; More
+            </div>
+            <button style={{
+              background: "#2D6A4F", color: "#fff",
+              border: "2.5px solid #1A0A00", borderRadius: 9999,
+              fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: "uppercase",
+              padding: "14px 24px", width: "100%", display: "block",
+              marginBottom: 12, cursor: "pointer", lineHeight: 1,
+            }}>
+              2Go Rewards Program
+            </button>
+            <button style={{
+              background: C.yellow, color: C.dark,
+              border: "2.5px solid #1A0A00", borderRadius: 9999,
+              fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: "uppercase",
+              padding: "14px 24px", width: "100%", display: "block",
+              cursor: "pointer", lineHeight: 1,
+            }}>
+              Join the Familia
+            </button>
+          </div>
+
         </div>
 
+        {/* Bottom bar */}
         <div style={{
-          borderTop: `1px solid ${C.border}`, paddingTop: 28,
-          display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12,
+          borderTop: `1px solid ${C.border}`,
+          marginTop: 48,
+          padding: "20px 0",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}>
-          <span style={{ fontSize: 12, color: C.muted }}>© 2025 2Go Restaurant. All rights reserved.</span>
-          <span style={{ fontSize: 12, color: C.muted }}>Abuja, Nigeria</span>
+          <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 13, color: C.muted }}>
+            © 2025 2Go Restaurant. All Rights Reserved
+          </span>
+          <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 13, color: C.muted }}>
+            Privacy Policy · Terms and Conditions
+          </span>
         </div>
-      </div>
+
+      </footer>
+
     </div>
   );
 }

@@ -34,9 +34,16 @@ export default function Navbar() {
           transition: background 0.2s ease, color 0.2s ease;
         }
         .nav2go-order:hover { background: #1A0A00; color: #F5C200; }
+
+        @media (max-width: 767px) {
+          .nav2go-links    { display: none !important; }
+          .nav2go-location { display: none !important; }
+          .nav2go-order    { padding: 10px 20px !important; font-size: 15px !important; }
+          .nav2go-nav      { height: 64px !important; padding: 0 24px !important; }
+        }
       `}</style>
 
-      <nav style={{
+      <nav className="nav2go-nav" style={{
         position: "fixed",
         top: 0,
         left: 0,
@@ -53,7 +60,7 @@ export default function Navbar() {
       }}>
 
         {/* LEFT — nav links */}
-        <div style={{ display: "flex", alignItems: "center", gap: 40 }}>
+        <div className="nav2go-links" style={{ display: "flex", alignItems: "center", gap: 40 }}>
           <a href="#menu"    className="nav2go-link">Menu</a>
           <a href="#about"   className="nav2go-link">About Us</a>
           <a href="#contact" className="nav2go-link">Contact</a>
@@ -76,7 +83,7 @@ export default function Navbar() {
 
         {/* RIGHT — location + CTA */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 32 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+          <div className="nav2go-location" style={{ display: "flex", alignItems: "center", gap: 7 }}>
             <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path
                 d="M5.5 0C2.462 0 0 2.462 0 5.5c0 3.85 5.5 8.5 5.5 8.5S11 9.35 11 5.5C11 2.462 8.538 0 5.5 0zm0 7.5a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"

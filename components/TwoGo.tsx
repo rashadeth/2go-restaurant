@@ -71,7 +71,7 @@ export default function TwoGo() {
 
         .twogo-btn-dark {
           background: ${C.dark}; color: ${C.yellow}; border: 2.5px solid #FAF6EE;
-          border-radius: 10px; padding: 16px 40px;
+          border-radius: 9999px; padding: 16px 40px;
           font-family: 'Fredoka', sans-serif; font-size: 19px; font-weight: 600;
           cursor: pointer; display: inline-block;
           transition: background 0.2s ease, color 0.2s ease;
@@ -80,7 +80,7 @@ export default function TwoGo() {
 
         .twogo-btn-yellow {
           background: ${C.yellow}; color: ${C.dark}; border: 2.5px solid #1A0A00;
-          border-radius: 10px; padding: 16px 40px;
+          border-radius: 9999px; padding: 16px 40px;
           font-family: 'Fredoka', sans-serif; font-size: 19px; font-weight: 600;
           cursor: pointer; display: inline-block;
           transition: background 0.2s ease, color 0.2s ease;
@@ -89,7 +89,7 @@ export default function TwoGo() {
 
         .twogo-btn-red {
           background: ${C.red}; color: #fff; border: 2.5px solid #1A0A00;
-          border-radius: 10px; padding: 16px 40px;
+          border-radius: 9999px; padding: 16px 40px;
           font-family: 'Fredoka', sans-serif; font-size: 19px; font-weight: 600;
           cursor: pointer; display: inline-block;
           transition: background 0.2s ease, color 0.2s ease;
@@ -98,7 +98,7 @@ export default function TwoGo() {
 
         .twogo-btn-outline {
           background: transparent; border: 2.5px solid #1A0A00;
-          color: ${C.dark}; border-radius: 10px; padding: 16px 40px;
+          color: ${C.dark}; border-radius: 9999px; padding: 16px 40px;
           font-family: 'Fredoka', sans-serif; font-size: 19px; font-weight: 500;
           cursor: pointer; display: inline-block;
           transition: background 0.2s ease, color 0.2s ease;
@@ -235,12 +235,14 @@ export default function TwoGo() {
           .twogo-feed-grid { grid-template-columns: 1fr !important; }
 
           /* Catering */
-          .twogo-catering-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
-          .twogo-catering-img  { min-height: 300px !important; }
+          .twogo-catering-grid { grid-template-columns: 1fr !important; min-height: auto !important; overflow: hidden !important; }
+          .twogo-catering-img  { min-height: 300px !important; position: relative !important; overflow: hidden !important; }
+          .twogo-catering-img img { position: relative !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 300px !important; transform: none !important; object-fit: cover !important; }
+          .twogo-catering-left { padding: 48px 24px !important; }
 
           /* Footer */
           .twogo-footer-grid    { grid-template-columns: 1fr !important; gap: 32px !important; }
-          .twogo-footer-divider { border-left: none !important; padding-left: 0 !important; border-top: 1px solid ${C.border}; padding-top: 32px !important; }
+          .twogo-footer-divider { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,0.25); padding-top: 32px !important; }
 
           /* Buttons full-width */
           .twogo-btn-dark, .twogo-btn-yellow, .twogo-btn-red,
@@ -248,8 +250,17 @@ export default function TwoGo() {
             width: 100% !important; box-sizing: border-box !important;
           }
 
-          /* No horizontal overflow */
-          * { max-width: 100%; }
+          /* Why section — remove dividers in single column */
+          .twogo-why-divider { border-right: none !important; padding-right: 0 !important; }
+
+          /* Rewards marquee — match 24px mobile padding */
+          .twogo-rewards-marquee { margin-left: -24px !important; margin-right: -24px !important; width: calc(100% + 48px) !important; }
+
+          /* Hero — match 64px mobile nav height */
+          [data-section="hero"] { margin-top: 64px !important; }
+
+          /* Prevent horizontal scroll globally */
+          body, [data-section] { overflow-x: hidden; }
         }
       `}</style>
 
@@ -267,7 +278,7 @@ export default function TwoGo() {
         {/* Block 1 — red headline */}
         <div className="twogo-hero-hl" style={{
           position: "absolute",
-          top: "22%",
+          top: "calc(22% + 40px)",
           left: "50%",
           transform: "translateX(-50%)",
           width: "80%",
@@ -282,34 +293,34 @@ export default function TwoGo() {
           Authentic Nigerian Flavour<br />in Abuja
         </div>
 
-        {/* Block 2 — dark subheadline */}
-        <div className="twogo-hero-sub" style={{
+        {/* Block 2 + CTA — grouped at button position */}
+        <div style={{
           position: "absolute",
-          top: "55%",
+          top: "calc(72% + 32px)",
           left: "50%",
           transform: "translateX(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 16,
           width: "70%",
-          textAlign: "center",
-          fontFamily: "'Anton', sans-serif",
-          fontSize: "clamp(24px, 3.5vw, 42px)",
-          textTransform: "uppercase",
-          color: C.dark,
-          lineHeight: 1.0,
-          textShadow: "0 0 8px rgba(255,255,255,0.5)",
         }}>
-          Bold Food. Real Flavour.
+          <div className="twogo-hero-sub" style={{
+            textAlign: "center",
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(24px, 3.5vw, 42px)",
+            textTransform: "uppercase",
+            color: C.dark,
+            lineHeight: 1.0,
+            textShadow: "0 0 8px rgba(255,255,255,0.5)",
+            width: "100%",
+          }}>
+            Bold Food. Real Flavour.
+          </div>
+          <button className="twogo-hero-cta twogo-hero-btn" style={{ whiteSpace: "nowrap" }}>
+            Order Now
+          </button>
         </div>
-
-        {/* CTA button */}
-        <button className="twogo-hero-cta twogo-hero-btn" style={{
-          position: "absolute",
-          top: "72%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          whiteSpace: "nowrap",
-        }}>
-          Order Now
-        </button>
       </div>
 
       {/* ─── MARQUEE ─────────────────────────────────────────────── */}
@@ -466,9 +477,9 @@ export default function TwoGo() {
                 overflow: "hidden", margin: "0 auto", position: "relative",
               }}>
                 <img
-                  src="/images/food%20menu/pepersou.webp"
+                  src="/images/food%20menu/real%20pepper.png"
                   alt="Pepper Soup"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 20%", display: "block", mixBlendMode: "multiply" }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }}
                 />
               </div>
               <div className="twogo-sticker-outer" style={{
@@ -565,7 +576,7 @@ export default function TwoGo() {
           2Go Limited Time Offers
         </div>
 
-        {/* 3-column card grid */}
+        {/* 3-column grid — no card wrappers */}
         <div className="twogo-why-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
@@ -574,132 +585,117 @@ export default function TwoGo() {
           margin: "64px auto 0",
         }}>
 
-          {/* Card 1 — Amala */}
-          <div style={{
-            background: "#fff",
-            border: `1.5px solid ${C.border}`,
-            borderRadius: 20,
-            padding: 24,
-            position: "relative",
-            overflow: "visible",
-          }}>
+          {/* Item 1 — Meat */}
+          <div className="twogo-why-divider" style={{ position: "relative", borderRight: "1px solid #1A0A00", paddingRight: 24 }}>
+            {/* Sticker */}
             <div className="twogo-sticker-outer" style={{
-              position: "absolute", top: -20, left: -20, zIndex: 1,
-              width: 118, height: 118, background: "#1A0A00",
+              position: "absolute", top: -16, left: -16, zIndex: 1,
+              width: 116, height: 116, background: "#1A0A00",
             }} />
             <div className="twogo-sticker" style={{
-              position: "absolute", top: -16, left: -16, zIndex: 2,
+              position: "absolute", top: -12, left: -12, zIndex: 2,
               width: 110, height: 110, background: "#2D6A4F",
             }}>
               <span style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 11,
-                color: "#fff", textTransform: "uppercase", lineHeight: 1.3, textAlign: "center",
+                fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 11,
+                color: "#fff", textTransform: "uppercase", lineHeight: 1.3, textAlign: "center", padding: 20, display: "block",
               }}>
-                Abuja&rsquo;s Favourite
+                Freshly Baked
               </span>
             </div>
-            <img
-              src="/images/food%20menu/2go%20amala.webp"
-              alt="Amala & Ewedu"
-              style={{ width: "100%", height: 260, objectFit: "contain", objectPosition: "center", display: "block" }}
-            />
+            {/* Image card */}
             <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 24,
-              color: C.dark, textTransform: "uppercase", marginTop: 16, textAlign: "center",
+              background: "#fff", border: "1px solid #1A0A00", borderRadius: 16,
+              height: 320, width: "100%", overflow: "hidden",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              position: "relative",
             }}>
-              Amala &amp; Ewedu
+              <img
+                src="/images/here%20today/remove%20meat.png"
+                alt="Meat dish"
+                style={{ maxHeight: 280, width: "auto", maxWidth: "90%", objectFit: "contain", display: "block", margin: "0 auto" }}
+              />
             </div>
-            <p style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
-              color: C.dark, textAlign: "center", lineHeight: 1.7, marginTop: 8,
-            }}>
-              Smooth, rich and deeply Nigerian. The kind of meal that feels like home.
+            {/* Text */}
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 26, color: C.dark, textTransform: "uppercase", marginTop: 20, textAlign: "center" }}>
+              Meat Pie
+            </div>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, textAlign: "center", lineHeight: 1.6, marginTop: 8 }}>
+              Crispy, golden and stuffed with bold Nigerian filling. A classic done right.
             </p>
           </div>
 
-          {/* Card 2 — Jollof Rice */}
-          <div style={{
-            background: "#fff",
-            border: `1.5px solid ${C.border}`,
-            borderRadius: 20,
-            padding: 24,
-            position: "relative",
-            overflow: "visible",
-          }}>
+          {/* Item 2 — Smoothie */}
+          <div className="twogo-why-divider" style={{ position: "relative", borderRight: "1px solid #1A0A00", paddingRight: 24 }}>
             <div className="twogo-sticker-outer" style={{
-              position: "absolute", top: -20, left: -20, zIndex: 1,
-              width: 118, height: 118, background: "#1A0A00",
+              position: "absolute", top: -16, left: -16, zIndex: 1,
+              width: 116, height: 116, background: "#1A0A00",
             }} />
             <div className="twogo-sticker" style={{
-              position: "absolute", top: -16, left: -16, zIndex: 2,
+              position: "absolute", top: -12, left: -12, zIndex: 2,
               width: 110, height: 110, background: C.yellow,
             }}>
               <span style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 11,
-                color: C.dark, textTransform: "uppercase", lineHeight: 1.3, textAlign: "center",
+                fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 11,
+                color: C.dark, textTransform: "uppercase", lineHeight: 1.3, textAlign: "center", padding: 20, display: "block",
               }}>
-                Our #1 Best Seller
+                Today Only
               </span>
             </div>
-            <img
-              src="/images/food%20menu/2go%20rice.webp"
-              alt="Jollof Rice"
-              style={{ width: "100%", height: 260, objectFit: "contain", objectPosition: "center", display: "block" }}
-            />
             <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 24,
-              color: C.dark, textTransform: "uppercase", marginTop: 16, textAlign: "center",
+              background: "#fff", border: "1px solid #1A0A00", borderRadius: 16,
+              height: 320, width: "100%", overflow: "hidden",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              position: "relative",
             }}>
-              Jollof Rice
+              <img
+                src="/images/here%20today/remove%20smoothie.png"
+                alt="Smoothie"
+                style={{ maxHeight: 280, width: "auto", maxWidth: "90%", objectFit: "contain", display: "block", margin: "0 auto" }}
+              />
             </div>
-            <p style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
-              color: C.dark, textAlign: "center", lineHeight: 1.7, marginTop: 8,
-            }}>
-              Party jollof done right. Smoky, bold and impossible to resist.
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 26, color: C.dark, textTransform: "uppercase", marginTop: 20, textAlign: "center" }}>
+              Fresh Smoothie
+            </div>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, textAlign: "center", lineHeight: 1.6, marginTop: 8 }}>
+              Blended fresh daily. Cold, fruity and the perfect companion to your meal.
             </p>
           </div>
 
-          {/* Card 3 — Pepper Soup */}
-          <div style={{
-            background: "#fff",
-            border: `1.5px solid ${C.border}`,
-            borderRadius: 20,
-            padding: 24,
-            position: "relative",
-            overflow: "visible",
-          }}>
+          {/* Item 3 — Pepper Soup */}
+          <div style={{ position: "relative" }}>
             <div className="twogo-sticker-outer" style={{
-              position: "absolute", top: -20, left: -20, zIndex: 1,
-              width: 118, height: 118, background: "#1A0A00",
+              position: "absolute", top: -16, left: -16, zIndex: 1,
+              width: 116, height: 116, background: "#1A0A00",
             }} />
             <div className="twogo-sticker" style={{
-              position: "absolute", top: -16, left: -16, zIndex: 2,
+              position: "absolute", top: -12, left: -12, zIndex: 2,
               width: 110, height: 110, background: C.red,
             }}>
               <span style={{
-                fontFamily: "'Anton', sans-serif", fontSize: 11,
-                color: "#fff", textTransform: "uppercase", lineHeight: 1.3, textAlign: "center",
+                fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 11,
+                color: "#fff", textTransform: "uppercase", lineHeight: 1.3, textAlign: "center", padding: 20, display: "block",
               }}>
-                500+ Orders This Month
+                Fan Favourite
               </span>
             </div>
-            <img
-              src="/images/food%20menu/pepersou.webp"
-              alt="Pepper Soup"
-              style={{ width: "100%", height: 260, objectFit: "contain", objectPosition: "center", display: "block", mixBlendMode: "multiply" }}
-            />
             <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 24,
-              color: C.dark, textTransform: "uppercase", marginTop: 16, textAlign: "center",
+              background: "#fff", border: "1px solid #1A0A00", borderRadius: 16,
+              height: 320, width: "100%", overflow: "hidden",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              position: "relative",
             }}>
-              Pepper Soup
+              <img
+                src="/images/here%20today/remove%20ssm.png"
+                alt="Small Chops"
+                style={{ maxHeight: 280, width: "auto", maxWidth: "90%", objectFit: "contain", display: "block", margin: "0 auto" }}
+              />
             </div>
-            <p style={{
-              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
-              color: C.dark, textAlign: "center", lineHeight: 1.7, marginTop: 8,
-            }}>
-              Hot, spicy and packed with flavour. The ultimate Nigerian comfort bowl.
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 26, color: C.dark, textTransform: "uppercase", marginTop: 20, textAlign: "center" }}>
+              Small Chops
+            </div>
+            <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, textAlign: "center", lineHeight: 1.6, marginTop: 8 }}>
+              The ultimate party starter. Crispy, saucy and gone before you know it.
             </p>
           </div>
 
@@ -807,7 +803,7 @@ export default function TwoGo() {
         </div>
 
         {/* Green marquee banner — full bleed */}
-        <div style={{
+        <div className="twogo-rewards-marquee" style={{
           background: "#2D6A4F",
           padding: "18px 0",
           overflow: "hidden",
@@ -888,12 +884,12 @@ export default function TwoGo() {
           margin: "0 auto",
         }}>
           {[
-            { img: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500&q=80", caption: "The jollof that started it all 🔥 Every time hits different.", likes: "1,204", comments: 38 },
-            { img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80", caption: "Bulk order for 120 people. Not a single complaint. 💪", likes: "983", comments: 21 },
-            { img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c8?w=500&q=80", caption: "Peppered chicken got me calling in sick tomorrow 😭🍗", likes: "2,107", comments: 64 },
-            { img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&q=80", caption: "Fried rice loaded with colour and flavour as always ✨", likes: "876", comments: 17 },
-            { img: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500&q=80", caption: "Corporate lunch for the whole team. Everyone went quiet. 😂", likes: "1,560", comments: 45 },
-            { img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80", caption: "Abuja's best kept secret isn't so secret anymore. 🌶️", likes: "3,221", comments: 89 },
+            { img: "/images/on%20the%20feed/WhatsApp%20Image%202026-05-07%20at%2015.19.19.jpeg",       caption: "The jollof that started it all 🔥 Every time hits different.", likes: "1,204", comments: 38 },
+            { img: "/images/on%20the%20feed/WhatsApp%20Image%202026-05-07%20at%2015.19.20.jpeg",       caption: "Bulk order for 120 people. Not a single complaint. 💪",       likes: "983",   comments: 21 },
+            { img: "/images/on%20the%20feed/WhatsApp%20Image%202026-05-07%20at%2015.19.20%20%281%29.jpeg", caption: "Peppered chicken got me calling in sick tomorrow 😭🍗",    likes: "2,107", comments: 64 },
+            { img: "/images/on%20the%20feed/WhatsApp%20Image%202026-05-07%20at%2015.19.20%20%282%29.jpeg", caption: "Fried rice loaded with colour and flavour as always ✨",   likes: "876",   comments: 17 },
+            { img: "/images/on%20the%20feed/WhatsApp%20Image%202026-05-07%20at%2015.19.35.jpeg",       caption: "Corporate lunch for the whole team. Everyone went quiet. 😂",  likes: "1,560", comments: 45 },
+            { img: "/images/on%20the%20feed/WhatsApp%20Image%202026-05-07%20at%2015.19.19.jpeg",       caption: "Abuja's best kept secret isn't so secret anymore. 🌶️",        likes: "3,221", comments: 89 },
           ].map((card, i) => (
             <div key={i} style={{
               background: "#fff",
@@ -963,19 +959,6 @@ export default function TwoGo() {
           ))}
         </div>
 
-        {/* CTA */}
-        <div style={{ marginTop: 48 }}>
-          <a
-            href="https://instagram.com/2gorestaurantabj"
-            target="_blank" rel="noreferrer"
-            style={{ textDecoration: "none" }}
-          >
-            <button className="twogo-btn-red" style={{ fontSize: 18, padding: "14px 44px" }}>
-              Follow @2gorestaurantabj
-            </button>
-          </a>
-        </div>
-
       </div>
 
       {/* ─── CATERING ────────────────────────────────────────────── */}
@@ -985,65 +968,84 @@ export default function TwoGo() {
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
         alignItems: "center",
-        overflow: "hidden",
         position: "relative",
+        overflow: "visible",
+        paddingTop: 80,
       }}>
 
         {/* LEFT — text */}
-        <div style={{ padding: "80px 64px" }}>
-          <div style={{
+        <div className="twogo-catering-left" style={{ padding: "80px 64px" }}>
+          <span style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: "clamp(48px, 7vw, 80px)",
+            fontSize: "clamp(56px, 8vw, 96px)",
             color: C.dark, textTransform: "uppercase",
-            lineHeight: 0.95,
+            lineHeight: 0.9, display: "block",
           }}>
             Big Event?
-          </div>
-          <div style={{
+          </span>
+          <span style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: "clamp(36px, 5vw, 60px)",
-            color: C.red, textTransform: "uppercase",
-            lineHeight: 0.95, marginBottom: 24,
+            fontSize: "clamp(36px, 6vw, 64px)",
+            color: C.dark, textTransform: "uppercase",
+            lineHeight: 0.9, marginBottom: 24, display: "block",
           }}>
             We&rsquo;ve Got You.
-          </div>
-          <div style={{
-            fontFamily: "'Manrope', sans-serif", fontWeight: 700,
-            fontSize: 22, color: C.dark, marginBottom: 16,
+          </span>
+          <span style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(20px, 3vw, 28px)",
+            color: C.dark, textTransform: "uppercase",
+            marginBottom: 16, display: "block",
           }}>
             Nigerian Catering in Abuja for Events &amp; Parties
-          </div>
+          </span>
           <p style={{
             fontFamily: "'Manrope', sans-serif", fontWeight: 600,
-            fontSize: 17, color: C.dark, lineHeight: 1.7, marginBottom: 40,
+            fontSize: 17, color: C.dark, lineHeight: 1.7, marginBottom: 8,
           }}>
             Order catering straight from the kitchen that knows how to feed a crowd. 2Go style.
           </p>
-          <a href="https://wa.me/2349054005285" target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
-            <button style={{
-              background: C.dark, color: C.yellow,
-              border: "2.5px solid #1A0A00",
-              borderRadius: 9999, padding: "16px 48px",
-              fontFamily: "'Anton', sans-serif", fontSize: 20,
-              textTransform: "uppercase", cursor: "pointer",
-              lineHeight: 1, transition: "background 0.2s ease, color 0.2s ease",
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "#fff"; (e.currentTarget as HTMLButtonElement).style.color = C.dark; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = C.dark; (e.currentTarget as HTMLButtonElement).style.color = C.yellow; }}
-            >
-              Talk to Us on WhatsApp
-            </button>
-          </a>
+          <p style={{
+            fontFamily: "'Manrope', sans-serif", fontWeight: 500,
+            fontSize: 13, color: C.dark, marginBottom: 40,
+          }}>
+            * Available for Wuse II and delivery within Abuja
+          </p>
+          <button className="twogo-btn-red" style={{
+            fontSize: 20, padding: "18px 52px",
+            display: "inline-block",
+            fontFamily: "'Anton', sans-serif",
+            letterSpacing: "1.5px",
+            lineHeight: 1.2,
+          }}>
+            Book Your Catering
+          </button>
         </div>
 
-        {/* RIGHT — food image */}
+        {/* RIGHT — catering image */}
         <div className="twogo-catering-img" style={{
-          height: "100%",
           minHeight: 500,
-          backgroundImage: "url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=900&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }} />
+          background: C.yellow,
+          position: "relative",
+          overflow: "visible",
+        }}>
+          <img
+            src="/images/catering/char.png"
+            alt="2Go Catering"
+            style={{
+              position: "absolute",
+              top: -100,
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "130%",
+              height: "calc(100% + 200px)",
+              objectFit: "contain",
+              objectPosition: "center",
+              zIndex: 2,
+              filter: "drop-shadow(0px 12px 24px rgba(0,0,0,0.12))",
+            }}
+          />
+        </div>
 
       </div>
 
@@ -1128,8 +1130,7 @@ export default function TwoGo() {
 
       {/* ─── FOOTER ──────────────────────────────────────────────── */}
       <footer data-section="footer" style={{
-        background: C.bg,
-        borderTop: `3px solid ${C.red}`,
+        background: C.red,
         padding: "48px 48px 0",
       }}>
 
@@ -1143,9 +1144,9 @@ export default function TwoGo() {
 
           {/* Col 1 — Logo */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 0 }}>
-              <div style={{ width: 14, height: 14, borderRadius: "50%", background: C.red, flexShrink: 0 }} />
-              <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 48, color: C.dark, lineHeight: 1 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              <div style={{ width: 14, height: 14, borderRadius: "50%", background: "#fff", flexShrink: 0 }} />
+              <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 48, color: "#fff", lineHeight: 1 }}>
                 2go<span style={{ color: C.yellow }}>.</span>
               </span>
             </div>
@@ -1153,11 +1154,11 @@ export default function TwoGo() {
 
           {/* Col 2 — Locations */}
           <div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: C.dark, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: "#fff", textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
               Locations
             </div>
             {["Wuse II, Abuja", "Order for Delivery", "Bulk Orders", "Catering", "See Full Menu"].map(link => (
-              <a key={link} href="#" style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, display: "block", marginBottom: 8, textDecoration: "none" }}>
+              <a key={link} href="#" style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: "rgba(255,255,255,0.85)", display: "block", marginBottom: 8, textDecoration: "none" }}>
                 {link}
               </a>
             ))}
@@ -1165,11 +1166,11 @@ export default function TwoGo() {
 
           {/* Col 3 — Order Now */}
           <div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: C.dark, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: "#fff", textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
               Order Now
             </div>
             {["Directly from us (Recommended)", "WhatsApp Order", "Call Us"].map(link => (
-              <a key={link} href="#" style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: C.dark, display: "block", marginBottom: 8, textDecoration: "none" }}>
+              <a key={link} href="#" style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 15, color: "rgba(255,255,255,0.85)", display: "block", marginBottom: 8, textDecoration: "none" }}>
                 {link}
               </a>
             ))}
@@ -1177,58 +1178,72 @@ export default function TwoGo() {
 
           {/* Col 4 — Socials */}
           <div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: C.dark, textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 16, color: "#fff", textTransform: "uppercase", letterSpacing: 2, marginBottom: 16 }}>
               Our Socials
             </div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, width: "fit-content" }}>
-              {[
-                { label: "in",  href: "#" },
-                { label: "fb",  href: "#" },
-                { label: "tk",  href: "#" },
-                { label: "ig",  href: "https://instagram.com/2gorestaurantabj" },
-              ].map(({ label, href }) => (
-                <a key={label} href={href} target="_blank" rel="noreferrer" style={{
-                  width: 44, height: 44, borderRadius: "50%",
-                  border: `2px solid ${C.dark}`,
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  textDecoration: "none",
-                }}>
-                  <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.dark, lineHeight: 1 }}>
-                    {label}
-                  </span>
-                </a>
-              ))}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, width: "fit-content" }}>
+
+              {/* LinkedIn */}
+              <a href="#" target="_blank" rel="noreferrer" style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.4)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+
+              {/* Facebook */}
+              <a href="#" target="_blank" rel="noreferrer" style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.4)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+
+              {/* TikTok */}
+              <a href="#" target="_blank" rel="noreferrer" style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.4)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.83a8.25 8.25 0 004.84 1.56V7a4.85 4.85 0 01-1.07-.31z"/></svg>
+              </a>
+
+              {/* Instagram */}
+              <a href="https://instagram.com/2gorestaurantabj" target="_blank" rel="noreferrer" style={{ width: 44, height: 44, borderRadius: "50%", background: "rgba(255,255,255,0.15)", border: "1.5px solid rgba(255,255,255,0.4)", display: "flex", alignItems: "center", justifyContent: "center", textDecoration: "none" }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+
             </div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.red, textTransform: "uppercase", marginTop: 16 }}>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 20, color: C.yellow, textTransform: "uppercase", marginTop: 16 }}>
               Blog
             </div>
           </div>
 
           {/* Col 5 — Special Discounts */}
-          <div className="twogo-footer-divider" style={{ borderLeft: `1px solid ${C.border}`, paddingLeft: 48 }}>
+          <div className="twogo-footer-divider" style={{ borderLeft: "1px solid rgba(255,255,255,0.25)", paddingLeft: 48 }}>
             <div style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.dark,
+              fontFamily: "'Anton', sans-serif", fontSize: 14, color: "#fff",
               textTransform: "uppercase", letterSpacing: 1, marginBottom: 16,
               maxWidth: 220, lineHeight: 1.3,
             }}>
               Special Discounts, Points &amp; More
             </div>
-            <button style={{
-              background: "#2D6A4F", color: "#fff",
-              border: "2.5px solid #1A0A00", borderRadius: 9999,
-              fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: "uppercase",
-              padding: "14px 24px", width: "100%", display: "block",
-              marginBottom: 12, cursor: "pointer", lineHeight: 1,
-            }}>
+            <button
+              style={{
+                background: "#2D6A4F", color: "#fff",
+                border: "2.5px solid #1A0A00", borderRadius: 9999,
+                fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: "uppercase",
+                padding: "14px 24px", width: "100%", display: "block",
+                marginBottom: 12, cursor: "pointer", lineHeight: 1,
+                transition: "background 0.2s ease, color 0.2s ease",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "#1A0A00"; (e.currentTarget as HTMLButtonElement).style.color = "#F5C200"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "#2D6A4F"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
+            >
               2Go Rewards Program
             </button>
-            <button style={{
-              background: C.yellow, color: C.dark,
-              border: "2.5px solid #1A0A00", borderRadius: 9999,
-              fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: "uppercase",
-              padding: "14px 24px", width: "100%", display: "block",
-              cursor: "pointer", lineHeight: 1,
-            }}>
+            <button
+              style={{
+                background: C.yellow, color: C.dark,
+                border: "2.5px solid #1A0A00", borderRadius: 9999,
+                fontFamily: "'Anton', sans-serif", fontSize: 16, textTransform: "uppercase",
+                padding: "14px 24px", width: "100%", display: "block",
+                cursor: "pointer", lineHeight: 1,
+                transition: "background 0.2s ease, color 0.2s ease",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "#1A0A00"; (e.currentTarget as HTMLButtonElement).style.color = "#F5C200"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = C.yellow; (e.currentTarget as HTMLButtonElement).style.color = C.dark; }}
+            >
               Join the Familia
             </button>
           </div>
@@ -1237,17 +1252,17 @@ export default function TwoGo() {
 
         {/* Bottom bar */}
         <div style={{
-          borderTop: `1px solid ${C.border}`,
+          borderTop: "1px solid rgba(255,255,255,0.2)",
           marginTop: 48,
           padding: "20px 0",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}>
-          <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 13, color: C.muted }}>
+          <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>
             © 2025 2Go Restaurant. All Rights Reserved
           </span>
-          <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 13, color: C.muted }}>
+          <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 500, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>
             Privacy Policy · Terms and Conditions
           </span>
         </div>

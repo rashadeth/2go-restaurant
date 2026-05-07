@@ -1,6 +1,10 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <style>{`
@@ -35,14 +39,83 @@ export default function Navbar() {
         }
         .nav2go-order:hover { background: #1A0A00; color: #F5C200; }
 
+        .nav2go-hamburger {
+          display: none;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
+          padding: 4px;
+          background: none;
+          border: none;
+        }
+        .nav2go-hamburger span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: #1A0A00;
+          border-radius: 2px;
+          transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .nav2go-mobile-menu {
+          display: none;
+          position: fixed;
+          top: 64px;
+          left: 0;
+          right: 0;
+          background: #FAF6EE;
+          border-bottom: 2px solid #1A0A00;
+          z-index: 998;
+          padding: 24px;
+          flex-direction: column;
+          gap: 0;
+        }
+        .nav2go-mobile-menu.open { display: flex; }
+
+        .nav2go-mobile-link {
+          font-family: 'Anton', sans-serif;
+          font-size: 22px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: #1A0A00;
+          text-decoration: none;
+          padding: 16px 0;
+          border-bottom: 1px solid #DDD5C5;
+          display: block;
+          cursor: pointer;
+        }
+        .nav2go-mobile-link:last-of-type { border-bottom: none; }
+        .nav2go-mobile-link:hover { color: #C8390A; }
+
+        .nav2go-mobile-cta {
+          margin-top: 20px;
+          background: #C8390A;
+          color: #fff;
+          border: 2.5px solid #1A0A00;
+          border-radius: 9999px;
+          padding: 14px 32px;
+          font-family: 'Anton', sans-serif;
+          font-size: 18px;
+          text-transform: uppercase;
+          cursor: pointer;
+          text-align: center;
+          display: block;
+          transition: background 0.2s ease, color 0.2s ease;
+        }
+        .nav2go-mobile-cta:hover { background: #1A0A00; color: #F5C200; }
+
         @media (max-width: 767px) {
           .nav2go-links    { display: none !important; }
           .nav2go-location { display: none !important; }
-          .nav2go-order    { padding: 10px 20px !important; font-size: 15px !important; }
+          .nav2go-order    { display: none !important; }
+          .nav2go-hamburger { display: flex !important; }
           .nav2go-nav      { height: 64px !important; padding: 0 24px !important; }
+          /* Switch to flex with space-between on mobile */
+          nav.nav2go-nav   { display: flex !important; justify-content: space-between !important; align-items: center !important; }
         }
       `}</style>
 
+      {/* Main nav bar */}
       <nav className="nav2go-nav" style={{
         position: "fixed",
         top: 0,
@@ -59,7 +132,7 @@ export default function Navbar() {
         boxSizing: "border-box",
       }}>
 
-        {/* LEFT — nav links */}
+        {/* LEFT — desktop nav links / mobile: empty (logo handled by grid center) */}
         <div className="nav2go-links" style={{ display: "flex", alignItems: "center", gap: 40 }}>
           <a href="#menu"    className="nav2go-link">Menu</a>
           <a href="#about"   className="nav2go-link">About Us</a>
@@ -81,7 +154,7 @@ export default function Navbar() {
           </span>
         </div>
 
-        {/* RIGHT — location + CTA */}
+        {/* RIGHT — desktop: location + CTA | mobile: hamburger */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 32 }}>
           <div className="nav2go-location" style={{ display: "flex", alignItems: "center", gap: 7 }}>
             <svg width="11" height="14" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -103,9 +176,29 @@ export default function Navbar() {
           </div>
 
           <button className="nav2go-order">Order Now</button>
+
+          {/* Hamburger — mobile only */}
+          <button
+            className="nav2go-hamburger"
+            onClick={() => setOpen(o => !o)}
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            <span style={{ transform: open ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+            <span style={{ opacity: open ? 0 : 1 }} />
+            <span style={{ transform: open ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+          </button>
         </div>
 
       </nav>
+
+      {/* Mobile slide-down menu */}
+      <div className={`nav2go-mobile-menu${open ? " open" : ""}`} role="navigation">
+        <a href="#menu"    className="nav2go-mobile-link" onClick={() => setOpen(false)}>Menu</a>
+        <a href="#about"   className="nav2go-mobile-link" onClick={() => setOpen(false)}>About Us</a>
+        <a href="#contact" className="nav2go-mobile-link" onClick={() => setOpen(false)}>Contact</a>
+        <a href="#"        className="nav2go-mobile-cta"  onClick={() => setOpen(false)}>Order Now</a>
+      </div>
     </>
   );
 }

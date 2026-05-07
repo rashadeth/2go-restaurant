@@ -37,13 +37,14 @@ export default function Navbar() {
       `}</style>
 
       <nav style={{
-        position: "sticky",
+        position: "fixed",
         top: 0,
-        zIndex: 99,
-        width: "100%",
+        left: 0,
+        right: 0,
+        zIndex: 999,
         height: 72,
         background: "#FAF6EE",
-        borderBottom: "1px solid #DDD5C5",
+        borderBottom: "2px solid #1A0A00",
         padding: "0 48px",
         display: "grid",
         gridTemplateColumns: "1fr auto 1fr",

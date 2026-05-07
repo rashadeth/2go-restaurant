@@ -65,7 +65,7 @@ export default function TwoGo() {
   return (
     <div style={{ background: C.bg, color: C.dark, fontFamily: "'DM Sans', sans-serif", overflowX: "hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=Manrope:wght@400;500;600;700&display=swap');
 
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -168,6 +168,10 @@ export default function TwoGo() {
           from { transform: translateX(0); }
           to   { transform: translateX(-50%); }
         }
+        @keyframes marqueeScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
 
         .twogo-lbl {
           font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 500;
@@ -190,6 +194,7 @@ export default function TwoGo() {
       {/* ─── HERO ────────────────────────────────────────────────── */}
       <div data-section="hero" style={{
         height: "100vh",
+        marginTop: 72,
         position: "relative",
         backgroundImage: "url('/images/hero2.webp')",
         backgroundSize: "cover",
@@ -337,9 +342,9 @@ export default function TwoGo() {
               Amala &amp; Ewedu
             </div>
             <p style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14,
-              color: C.muted, textAlign: "center",
-              maxWidth: 260, margin: "8px auto 0", lineHeight: 1.5,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              color: C.dark, textAlign: "center",
+              maxWidth: 260, margin: "8px auto 0", lineHeight: 1.7,
             }}>
               Smooth, rich and deeply Nigerian. The kind of meal that feels like home.
             </p>
@@ -381,9 +386,9 @@ export default function TwoGo() {
               Jollof Rice
             </div>
             <p style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14,
-              color: C.muted, textAlign: "center",
-              maxWidth: 260, margin: "8px auto 0", lineHeight: 1.5,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              color: C.dark, textAlign: "center",
+              maxWidth: 260, margin: "8px auto 0", lineHeight: 1.7,
             }}>
               Party jollof done right. Smoky, bold and impossible to resist.
             </p>
@@ -425,9 +430,9 @@ export default function TwoGo() {
               Pepper Soup
             </div>
             <p style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14,
-              color: C.muted, textAlign: "center",
-              maxWidth: 260, margin: "8px auto 0", lineHeight: 1.5,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              color: C.dark, textAlign: "center",
+              maxWidth: 260, margin: "8px auto 0", lineHeight: 1.7,
             }}>
               Hot, spicy and packed with flavour. The ultimate Nigerian comfort bowl.
             </p>
@@ -461,20 +466,20 @@ export default function TwoGo() {
           Authentic Nigerian Flavour in Abuja
         </div>
         <p style={{
-          fontFamily: "'DM Sans', sans-serif",
+          fontFamily: "'Manrope', sans-serif",
+          fontWeight: 600,
           fontSize: 18,
           color: C.dark,
-          lineHeight: 1.8,
+          lineHeight: 1.7,
           maxWidth: 860,
           margin: "0 auto",
-          fontWeight: 400,
         }}>
           2Go Restaurant brings bold, real Nigerian flavours to Abuja. From our signature jollof rice and peppered chicken to our famous pepper soup, everything is made fresh daily with recipes rooted in tradition. Whether you&rsquo;re grabbing lunch, ordering for your office, or feeding a crowd at your event — we&rsquo;ve got the food, the vibe, and the flavour. One location in Wuse II, ready to serve you.
         </p>
       </div>
 
       {/* ─── WHY 2GO ─────────────────────────────────────────────── */}
-      <div data-section="why" style={{ background: C.bgAlt, padding: "80px 48px", textAlign: "center" }}>
+      <div data-section="why" style={{ background: "#F2EBE0", padding: "80px 48px", textAlign: "center" }}>
 
         {/* Section header */}
         <div style={{
@@ -541,8 +546,8 @@ export default function TwoGo() {
               Amala &amp; Ewedu
             </div>
             <p style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14,
-              color: C.muted, textAlign: "center", lineHeight: 1.5, marginTop: 8,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              color: C.dark, textAlign: "center", lineHeight: 1.7, marginTop: 8,
             }}>
               Smooth, rich and deeply Nigerian. The kind of meal that feels like home.
             </p>
@@ -584,8 +589,8 @@ export default function TwoGo() {
               Jollof Rice
             </div>
             <p style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14,
-              color: C.muted, textAlign: "center", lineHeight: 1.5, marginTop: 8,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              color: C.dark, textAlign: "center", lineHeight: 1.7, marginTop: 8,
             }}>
               Party jollof done right. Smoky, bold and impossible to resist.
             </p>
@@ -627,8 +632,8 @@ export default function TwoGo() {
               Pepper Soup
             </div>
             <p style={{
-              fontFamily: "'Anton', sans-serif", fontSize: 14,
-              color: C.muted, textAlign: "center", lineHeight: 1.5, marginTop: 8,
+              fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 14,
+              color: C.dark, textAlign: "center", lineHeight: 1.7, marginTop: 8,
             }}>
               Hot, spicy and packed with flavour. The ultimate Nigerian comfort bowl.
             </p>
@@ -636,9 +641,275 @@ export default function TwoGo() {
 
         </div>
 
+      </div>
+
+      {/* ─── REWARDS ─────────────────────────────────────────────── */}
+      <div data-section="rewards" style={{ background: "#F2EBE0", padding: "80px 48px", textAlign: "center" }}>
+
+        {/* Medal icon */}
+        <span style={{ fontSize: 56, display: "block", marginBottom: 16, lineHeight: 1, color: C.yellow }}>✯</span>
+
+        {/* Headline */}
+        <div style={{
+          fontFamily: "'Anton', sans-serif",
+          fontSize: "clamp(28px, 4vw, 52px)",
+          color: "#2D6A4F",
+          textTransform: "uppercase",
+          lineHeight: 1.05,
+          marginBottom: 56,
+        }}>
+          Earn 10 Points for Every ₦1,000 You Spend!
+        </div>
+
+        {/* 3 yellow sticker badges */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          maxWidth: 900,
+          margin: "0 auto",
+          gap: 32,
+          alignItems: "center",
+          justifyItems: "center",
+        }}>
+          {[
+            "Sign up today and get 500 POINTS",
+            "Earn 10 points for every ₦1,000 you spend!",
+            "Order bulk and earn 2X points instantly",
+          ].map((text, i) => (
+            <div key={i} style={{ position: "relative", width: 180, height: 180 }}>
+              {/* Outer dark layer */}
+              <div style={{
+                position: "absolute", top: 0, left: 0,
+                width: 188, height: 188, background: "#1A0A00",
+                clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
+              }} />
+              {/* Inner yellow layer */}
+              <div style={{
+                position: "absolute", top: 4, left: 4,
+                width: 180, height: 180, background: C.yellow,
+                clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
+                display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column",
+              }}>
+                <span style={{
+                  fontFamily: "'Manrope', sans-serif", fontWeight: 600,
+                  fontSize: 13, color: C.dark, textAlign: "center",
+                  lineHeight: 1.4, padding: 28, wordBreak: "break-word",
+                }}>
+                  {text}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Rewards tiers */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          maxWidth: 900,
+          margin: "64px auto 0",
+        }}>
+
+          {/* Tier 1 */}
+          <div style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
+              Free Side Dish
+            </div>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
+              500 Points
+            </div>
+          </div>
+
+          {/* Tier 2 */}
+          <div style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
+              Free Main Meal
+            </div>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
+              1,200 Points
+            </div>
+          </div>
+
+          {/* Tier 3 */}
+          <div style={{ padding: "0 32px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
+              Free Full Combo
+            </div>
+            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
+              2,000 Points
+            </div>
+          </div>
+
+        </div>
+
+        {/* Green marquee banner — full bleed */}
+        <div style={{
+          background: "#2D6A4F",
+          padding: "18px 0",
+          overflow: "hidden",
+          marginTop: 64,
+          marginLeft: -48,
+          marginRight: -48,
+          width: "calc(100% + 96px)",
+        }}>
+          {/* Inner track: two identical groups so translateX(-50%) loops seamlessly */}
+          <div style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "max-content",
+            animation: "marqueeScroll 30s linear infinite",
+          }}>
+            {[0, 1].map(group => (
+              <div key={group} style={{ display: "flex", flexDirection: "row", alignItems: "center", flexShrink: 0 }}>
+                {[0, 1, 2, 3, 4].map(i => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+                    <span style={{
+                      fontFamily: "'Anton', sans-serif", fontSize: 22,
+                      color: "#fff", textTransform: "uppercase",
+                      padding: "0 40px", whiteSpace: "nowrap", flexShrink: 0,
+                    }}>
+                      Join Our Rewards
+                    </span>
+                    <button style={{
+                      background: C.yellow, color: C.dark,
+                      border: "2.5px solid #1A0A00", borderRadius: 9999,
+                      padding: "10px 28px", margin: "0 24px",
+                      fontFamily: "'Anton', sans-serif", fontSize: 18,
+                      textTransform: "uppercase", cursor: "pointer",
+                      lineHeight: 1, whiteSpace: "nowrap", flexShrink: 0,
+                    }}>
+                      Join Now
+                    </button>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* ─── FEED ────────────────────────────────────────────────── */}
+      <div data-section="feed" style={{ background: C.bg, padding: "80px 48px", textAlign: "center" }}>
+
+        {/* Section header */}
+        <div style={{ marginBottom: 56 }}>
+          <div style={{
+            fontFamily: "'Anton', sans-serif", fontSize: 18,
+            color: C.dark, textTransform: "uppercase", letterSpacing: 2, lineHeight: 1,
+          }}>
+            On the Feed:
+          </div>
+          <div style={{
+            fontFamily: "'Anton', sans-serif",
+            fontSize: "clamp(36px, 6vw, 72px)",
+            color: C.red, textTransform: "uppercase", lineHeight: 1, marginTop: 4,
+          }}>
+            Mucho 2Go Love
+          </div>
+          <div style={{
+            fontFamily: "'Manrope', sans-serif", fontWeight: 600,
+            fontSize: 18, color: C.dark, marginTop: 8,
+          }}>
+            Spotted: Real Abuja People Eating Right
+          </div>
+        </div>
+
+        {/* Instagram cards grid */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: 16,
+          maxWidth: 1100,
+          margin: "0 auto",
+        }}>
+          {[
+            { img: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500&q=80", caption: "The jollof that started it all 🔥 Every time hits different.", likes: "1,204", comments: 38 },
+            { img: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80", caption: "Bulk order for 120 people. Not a single complaint. 💪", likes: "983", comments: 21 },
+            { img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c8?w=500&q=80", caption: "Peppered chicken got me calling in sick tomorrow 😭🍗", likes: "2,107", comments: 64 },
+            { img: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=500&q=80", caption: "Fried rice loaded with colour and flavour as always ✨", likes: "876", comments: 17 },
+            { img: "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=500&q=80", caption: "Corporate lunch for the whole team. Everyone went quiet. 😂", likes: "1,560", comments: 45 },
+            { img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=500&q=80", caption: "Abuja's best kept secret isn't so secret anymore. 🌶️", likes: "3,221", comments: 89 },
+          ].map((card, i) => (
+            <div key={i} style={{
+              background: "#fff",
+              border: `1px solid ${C.border}`,
+              borderRadius: 12,
+              overflow: "hidden",
+              position: "relative",
+              textAlign: "left",
+            }}>
+              {/* Top bar */}
+              <div style={{
+                padding: "12px 16px",
+                display: "flex", alignItems: "center", justifyContent: "space-between",
+              }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                  <div style={{
+                    width: 40, height: 40, borderRadius: "50%",
+                    background: C.yellow,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    flexShrink: 0,
+                  }}>
+                    <span style={{ fontFamily: "'Anton', sans-serif", fontSize: 14, color: C.dark }}>2G</span>
+                  </div>
+                  <div>
+                    <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 13, color: C.dark, lineHeight: 1.3 }}>
+                      2gorestaurantabj
+                    </div>
+                    <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 400, fontSize: 11, color: C.muted, lineHeight: 1.3 }}>
+                      Wuse II, Abuja
+                    </div>
+                  </div>
+                </div>
+                <span style={{ fontSize: 18, color: C.muted, letterSpacing: 2, lineHeight: 1 }}>···</span>
+              </div>
+
+              {/* Image */}
+              <div style={{
+                height: 280,
+                backgroundImage: `url(${card.img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }} />
+
+              {/* Actions row */}
+              <div style={{ padding: "12px 16px 4px", display: "flex", gap: 14, alignItems: "center" }}>
+                <span style={{ fontSize: 20, cursor: "pointer" }}>🤍</span>
+                <span style={{ fontSize: 20, cursor: "pointer" }}>💬</span>
+                <span style={{ fontSize: 20, cursor: "pointer" }}>↗</span>
+              </div>
+
+              {/* Likes */}
+              <div style={{ padding: "0 16px 6px", fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 13, color: C.dark }}>
+                {card.likes} likes
+              </div>
+
+              {/* Caption */}
+              <div style={{ padding: "0 16px 12px" }}>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 700, fontSize: 13, color: C.dark }}>2gorestaurantabj </span>
+                <span style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 400, fontSize: 13, color: C.dark }}>{card.caption}</span>
+              </div>
+
+              {/* View comments */}
+              <div style={{ padding: "0 16px 14px", fontFamily: "'Manrope', sans-serif", fontWeight: 400, fontSize: 12, color: C.muted }}>
+                View all {card.comments} comments
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* CTA */}
-        <div style={{ marginTop: 56 }}>
-          <button className="twogo-menu-cta">Start Your Order</button>
+        <div style={{ marginTop: 48 }}>
+          <a
+            href="https://instagram.com/2gorestaurantabj"
+            target="_blank" rel="noreferrer"
+            style={{ textDecoration: "none" }}
+          >
+            <button className="twogo-btn-red" style={{ fontSize: 18, padding: "14px 44px" }}>
+              Follow @2gorestaurantabj
+            </button>
+          </a>
         </div>
 
       </div>
@@ -737,7 +1008,7 @@ export default function TwoGo() {
                   <span key={si} style={{ color: si < 4 ? C.yellow : C.red, fontSize: 13 }}>★</span>
                 ))}
               </div>
-              <p style={{ fontSize: 16, color: C.muted, lineHeight: 1.82, marginBottom: 28, fontStyle: "italic" }}>
+              <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 16, color: C.dark, lineHeight: 1.7, marginBottom: 28 }}>
                 &ldquo;{r.text}&rdquo;
               </p>
               <span style={{ fontSize: 13, color: C.dark, fontWeight: 600 }}>{r.name}</span>
@@ -784,7 +1055,7 @@ export default function TwoGo() {
             <span style={{ color: C.red }}>drops.</span>
           </h2>
 
-          <p style={{ fontSize: 17, color: "rgba(255,251,240,0.35)", lineHeight: 1.75, marginBottom: 48, maxWidth: 400 }}>
+          <p style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 17, color: C.dark, lineHeight: 1.7, marginBottom: 48, maxWidth: 400 }}>
             Promos, new menu items, weekend specials. Right to your phone and inbox. No spam.
           </p>
 

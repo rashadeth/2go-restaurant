@@ -210,7 +210,7 @@ export default function TwoGo() {
           .twogo-section-pad { padding: 48px 24px !important; }
 
           /* Hero */
-          .twogo-hero-hl   { font-size: clamp(28px, 8vw, 48px) !important; width: 90% !important; top: 18% !important; }
+          .twogo-hero-hl   { font-size: clamp(36px, 10vw, 56px) !important; width: 90% !important; top: calc(18% + 24px) !important; line-height: 1.15 !important; }
           .twogo-hero-sub  { font-size: clamp(18px, 4vw, 28px) !important; width: 88% !important; top: 50% !important; }
           .twogo-hero-btn  { top: 66% !important; padding: 14px 40px !important; }
 

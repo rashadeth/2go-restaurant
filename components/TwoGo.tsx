@@ -224,12 +224,10 @@ export default function TwoGo() {
           /* Why cards */
           .twogo-why-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
 
-          /* Rewards badges */
-          .twogo-rewards-badges { grid-template-columns: 1fr !important; }
-
-          /* Rewards tiers */
-          .twogo-rewards-tiers { grid-template-columns: 1fr !important; }
-          .twogo-tier-divider  { border-right: none !important; border-top: 1px solid ${C.border}; padding-top: 24px !important; margin-top: 16px !important; }
+          /* Rewards grid */
+          .twogo-rewards-grid { grid-template-columns: 1fr !important; }
+          .twogo-reward-item  { border-right: none !important; border-bottom: 1px solid ${C.border} !important; padding-bottom: 40px !important; margin-bottom: 8px !important; }
+          .twogo-reward-item:last-child { border-bottom: none !important; padding-bottom: 0 !important; }
 
           /* Feed */
           .twogo-feed-grid { grid-template-columns: 1fr !important; }
@@ -721,85 +719,60 @@ export default function TwoGo() {
           Earn 10 Points for Every ₦1,000 You Spend!
         </div>
 
-        {/* 3 yellow sticker badges */}
-        <div className="twogo-rewards-badges" style={{
+        {/* 3 reward items — sticker + tier paired together */}
+        <div className="twogo-rewards-grid" style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           maxWidth: 900,
           margin: "0 auto",
-          gap: 32,
-          alignItems: "center",
-          justifyItems: "center",
+          gap: 0,
+          alignItems: "start",
         }}>
           {[
-            "Sign up today and get 500 POINTS",
-            "Earn 10 points for every ₦1,000 you spend!",
-            "Order bulk and earn 2X points instantly",
-          ].map((text, i) => (
-            <div key={i} style={{ position: "relative", width: 180, height: 180 }}>
-              {/* Outer dark layer */}
-              <div style={{
-                position: "absolute", top: 0, left: 0,
-                width: 188, height: 188, background: "#1A0A00",
-                clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
-              }} />
-              {/* Inner yellow layer */}
-              <div style={{
-                position: "absolute", top: 4, left: 4,
-                width: 180, height: 180, background: C.yellow,
-                clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
-                display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column",
-              }}>
-                <span style={{
-                  fontFamily: "'Manrope', sans-serif", fontWeight: 600,
-                  fontSize: 13, color: C.dark, textAlign: "center",
-                  lineHeight: 1.4, padding: 28, wordBreak: "break-word",
+            { badge: "Sign up today and get 500 POINTS",          tier: "Free Side Dish",  points: "500 Points",   border: true },
+            { badge: "Earn 10 points for every ₦1,000 you spend!", tier: "Free Main Meal",  points: "1,200 Points", border: true },
+            { badge: "Order bulk and earn 2X points instantly",    tier: "Free Full Combo", points: "2,000 Points", border: false },
+          ].map((item, i) => (
+            <div key={i} className="twogo-reward-item" style={{
+              display: "flex", flexDirection: "column", alignItems: "center",
+              padding: "0 32px",
+              borderRight: item.border ? `2px solid ${C.border}` : "none",
+              gap: 32,
+            }}>
+              {/* Sticker badge */}
+              <div style={{ position: "relative", width: 180, height: 188, flexShrink: 0 }}>
+                <div style={{
+                  position: "absolute", top: 0, left: 0,
+                  width: 188, height: 188, background: "#1A0A00",
+                  clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
+                }} />
+                <div style={{
+                  position: "absolute", top: 4, left: 4,
+                  width: 180, height: 180, background: C.yellow,
+                  clipPath: "polygon(50% 0%, 56% 12%, 65% 4%, 68% 17%, 79% 11%, 79% 24%, 91% 21%, 88% 34%, 100% 35%, 94% 46%, 100% 50%, 94% 54%, 100% 65%, 88% 66%, 91% 79%, 79% 76%, 79% 89%, 68% 83%, 65% 96%, 56% 88%, 50% 100%, 44% 88%, 35% 96%, 32% 83%, 21% 89%, 21% 76%, 9% 79%, 12% 66%, 0% 65%, 6% 54%, 0% 50%, 6% 46%, 0% 35%, 12% 34%, 9% 21%, 21% 24%, 21% 11%, 32% 17%, 35% 4%, 44% 12%)",
+                  display: "flex", alignItems: "center", justifyContent: "center",
                 }}>
-                  {text}
-                </span>
+                  <span style={{
+                    fontFamily: "'Manrope', sans-serif", fontWeight: 600,
+                    fontSize: 13, color: C.dark, textAlign: "center",
+                    lineHeight: 1.4, padding: 28, wordBreak: "break-word",
+                  }}>
+                    {item.badge}
+                  </span>
+                </div>
+              </div>
+
+              {/* Tier writeup */}
+              <div style={{ textAlign: "center" }}>
+                <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
+                  {item.tier}
+                </div>
+                <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
+                  {item.points}
+                </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Rewards tiers */}
-        <div className="twogo-rewards-tiers" style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          maxWidth: 900,
-          margin: "64px auto 0",
-        }}>
-
-          {/* Tier 1 */}
-          <div className="twogo-tier-divider" style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
-              Free Side Dish
-            </div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
-              500 Points
-            </div>
-          </div>
-
-          {/* Tier 2 */}
-          <div className="twogo-tier-divider" style={{ padding: "0 32px", borderRight: `2px solid ${C.border}`, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
-              Free Main Meal
-            </div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
-              1,200 Points
-            </div>
-          </div>
-
-          {/* Tier 3 */}
-          <div style={{ padding: "0 32px", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ fontFamily: "'Manrope', sans-serif", fontWeight: 600, fontSize: 18, color: C.dark, lineHeight: 1.4 }}>
-              Free Full Combo
-            </div>
-            <div style={{ fontFamily: "'Anton', sans-serif", fontSize: 36, color: "#2D6A4F", textTransform: "uppercase", marginTop: 8, lineHeight: 1 }}>
-              2,000 Points
-            </div>
-          </div>
-
         </div>
 
         {/* Green marquee banner — full bleed */}

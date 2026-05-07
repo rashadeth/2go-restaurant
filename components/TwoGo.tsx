@@ -442,6 +442,37 @@ export default function TwoGo() {
 
       </div>
 
+      {/* ─── ABOUT ───────────────────────────────────────────────── */}
+      <div data-section="about" style={{
+        background: C.bg,
+        borderTop: "4px solid #2D6A4F",
+        borderBottom: "4px solid #2D6A4F",
+        padding: "72px 48px",
+        textAlign: "center",
+      }}>
+        <div style={{
+          fontFamily: "'Anton', sans-serif",
+          fontSize: "clamp(28px, 4vw, 48px)",
+          color: C.dark,
+          textTransform: "uppercase",
+          marginBottom: 32,
+          lineHeight: 1.1,
+        }}>
+          Authentic Nigerian Flavour in Abuja
+        </div>
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: 18,
+          color: C.dark,
+          lineHeight: 1.8,
+          maxWidth: 860,
+          margin: "0 auto",
+          fontWeight: 400,
+        }}>
+          2Go Restaurant brings bold, real Nigerian flavours to Abuja. From our signature jollof rice and peppered chicken to our famous pepper soup, everything is made fresh daily with recipes rooted in tradition. Whether you&rsquo;re grabbing lunch, ordering for your office, or feeding a crowd at your event — we&rsquo;ve got the food, the vibe, and the flavour. One location in Wuse II, ready to serve you.
+        </p>
+      </div>
+
       {/* ─── WHY 2GO ─────────────────────────────────────────────── */}
       <div data-section="why" style={{ background: C.bgAlt, padding: "80px 48px", textAlign: "center" }}>
 
